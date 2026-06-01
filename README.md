@@ -27,12 +27,11 @@ UPDATE telco_churn SET Churn = REPLACE(Churn, '\r', '');
 SELECT Churn, COUNT(*) FROM telco_churn GROUP BY Churn;
 
 Hasil Validasi Akhir:
- ________________________________
-|Churns Status | Total Pelanggan |
-|--------------|-----------------|
-| NO           | 5174            |
-| YES          | 1869            |
- ---------------------------------
+
+| Churn Status | Total Pelanggan |
+| :--- | :---: |
+| NO | 5174 |
+| YES | 1869 |
 
 ## ​📊 Key Insights & Data Analysis
 
@@ -50,13 +49,13 @@ GROUP BY Contract
 ORDER BY Churn_Rate_Persen DESC;
 
 Hasil Output:
- _______________________________________________________________
-| Contract     | Total Pelanggan | Total Churn | Churn Rate(%)  |
-|--------------|-----------------|-------------|----------------|
-|Month-to-Month| 3875            | 1655        | 42.71%         |
-|One Year      | 1473            | 166         | 11.27%         |
-|Two Year      | 1695            | 48          | 2.83%          |
- ---------------------------------------------------------------
+
+| Contract | Total Pelanggan | Total Churn | Churn Rate (%) |
+| :--- | :---: | :---: | :---: |
+| Month-to-month | 3,875 | 1,655 | **42.71%** |
+| One year | 1,473 | 166 | 11.27% |
+| Two year | 1,695 | 48 | 2.83% |
+
 
 **Visualisasi Grafik:**
 ![Grafik Churn berdasarkan Jenis Kontrak](churn_by_contract.png)
@@ -72,12 +71,12 @@ FROM telco_churn
 GROUP BY Churn;
 
 Hasil Output:
- ________________________________________
+
 | Churn Status | Rata-rata Biaya Bulanan |
-|--------------|-------------------------|
-| No           | 61.27%                  |
-| Yes          | 74.44%                  |
- ----------------------------------------
+| :--- | :---: |
+| No | 61.27 |
+| Yes | **74.44** |
+
 
 Insight: Rata-rata biaya bulanan pelanggan yang churn jauh lebih mahal (74.44) dibandingkan pelanggan yang bertahan (61.27). Pelanggan sangat sensitif terhadap harga yang tinggi jika tidak diimbangi dengan nilai atau kualitas layanan yang sepadan.
 
@@ -96,13 +95,12 @@ GROUP BY InternetService
 ORDER BY Churn_Rate_Persen DESC;
 
 Hasil Output:
- ________________________________________________________________
-| Internet Service | Total Pelanggan | Total Chum | Churn Rate(%) |
-|------------------|-----------------|------------|---------------|
-| Fiber optic      | 3,096           | 1,297      | 41.89%        |
-| DSL              | 2,421           | 459        | 18.96%        |
-| No Internet      | 1,526           | 113        | 7.40%         |
- -----------------------------------------------------------------
+
+| Internet Service | Total Pelanggan | Total Churn | Churn Rate (%) |
+| :--- | :---: | :---: | :---: |
+| Fiber optic | 3096 | 1297 | **41.89%** |
+| DSL | 2421 | 459 | 18.96% |
+| No | 1526 | 113 | 7.40% |
 
 Insight: Infrastruktur Fiber optic secara mengejutkan menyumbang angka churn sebesar 41.89%, jauh lebih tinggi daripada teknologi DSL (18.96%). Ini mengindikasikan adanya isu krusial pada stabilitas jaringan atau ketidakpuasan terhadap skema harga produk Fiber Optic.
 
@@ -117,13 +115,13 @@ GROUP BY TechSupport
 ORDER BY Churn_Rate_Persen DESC;
 
 Hasil Output:
- _______________________________________________________________
+
 | Tech Support | Total Pelanggan | Total Churn | Churn Rate (%) |
-|--------------|-----------------|-------------|----------------|
-| No           | 3,473           | 1,446       | 41.64%         |
-| Yes          | 2,044           | 310         | 15.17%         |
-| No Internet  | 1,526           | 113         | 7.40%          |
- ---------------------------------------------------------------
+| :--- | :---: | :---: | :---: |
+| No | 3473 | 1446 | **41.64%** |
+| Yes | 2044 | 310 | 15.17% |
+| No internet service | 1526 | 113 | 7.40% |
+
 Insight: Pelanggan yang tidak mendapatkan atau tidak memanfaatkan bantuan teknis (TechSupport = 'No') memiliki churn rate sebesar 41.64%. Sebaliknya, kelompok yang mendapatkan TechSupport berhasil diredam angka churn-nya hingga menyisakan 15.17%.
 
 ​3. Karakteristik Demografi & Masa Berlangganan (Tenure)
@@ -140,12 +138,11 @@ FROM telco_churn
 GROUP BY SeniorCitizen;
 
 Hasil Output:
- ___________________________________________________________________
-| Kategori Umur   | Total Pelanggan  | Total Churn | Churn Rate (%) |
-|-----------------|------------------|-------------|----------------|
-| Usia Produktif  | 5,901            | 1,393       | 23.61%         |
-| Lansia (Senior) | 1,142            | 476         | 41.68%         |
- -------------------------------------------------------------------
+
+| Kategori Usia | Total Pelanggan | Total Churn | Churn Rate (%) |
+| :--- | :---: | :---: | :---: |
+| Usia Produktif | 5901 | 1393 | 23.61% |
+| Lansia (Senior) | 1142 | 476 | **41.68%** |
 
 Insight: Kelompok Lansia (Senior Citizen) jauh lebih rentan churn dengan persentase 41.68% dibandingkan usia produktif yang hanya sebesar 23.61%. Faktor adaptasi teknologi atau penyesuaian pengeluaran masa pensiun diduga menjadi pemicu utama.
 
@@ -157,12 +154,11 @@ FROM telco_churn
 GROUP BY Churn;
 
 Hasil Output:
- ______________________________________________
-| Churn Status  | Rata-Rata Bulan Berlangganan |
-|---------------|------------------------------|
-| No (Bertahan) | 37.6 Bulan                   |
-| Yes (Churn)   | 18.0 Bulan                   |
- ----------------------------------------------
+
+| Churn Status | Rata-Rata Bulan Berlangganan |
+| :--- | :---: |
+| No | 37.5 Bulan |
+| Yes | **17.9 Bulan** |
 
 Insight: Rata-rata pelanggan yang churn memutuskan pergi pada bulan ke-18 (1.5 Tahun). Ini menandakan tahun pertama hingga pertengahan tahun kedua adalah Danger Zone (fase paling kritis) yang wajib dikawal ketat oleh tim CRM.
 
