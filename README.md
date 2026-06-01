@@ -34,7 +34,7 @@ Hasil Validasi Akhir:
 | YES          | 1869            |
  ---------------------------------
 
-Key Insights & Data Analysis
+## ​📊 Key Insights & Data Analysis
 
 ​1. Faktor Finansial & Komitmen Kontrak
 ​Analisis menunjukkan bahwa jenis ikatan kontrak dan skema biaya bulanan memiliki korelasi yang sangat kuat dengan keputusan pelanggan untuk pergi.
