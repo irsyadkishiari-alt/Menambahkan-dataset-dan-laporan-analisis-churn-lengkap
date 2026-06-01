@@ -81,6 +81,8 @@ Hasil Output:
 | No | 61.27 |
 | Yes | **74.44** |
 
+**Visuaalisasi Grafik**
+![Distribusi Biaya Bulanan](churn_by_monthly_charges.png)
 
 Insight: Rata-rata biaya bulanan pelanggan yang churn jauh lebih mahal (74.44) dibandingkan pelanggan yang bertahan (61.27). Pelanggan sangat sensitif terhadap harga yang tinggi jika tidak diimbangi dengan nilai atau kualitas layanan yang sepadan.
 
@@ -106,6 +108,9 @@ Hasil Output:
 | DSL | 2421 | 459 | 18.96% |
 | No | 1526 | 113 | 7.40% |
 
+**Visualisasi Grafik**
+![Churn Rate berdasarkan Jenis Layanan Internet](churn_by_internet_service.png)
+
 Insight: Infrastruktur Fiber optic secara mengejutkan menyumbang angka churn sebesar 41.89%, jauh lebih tinggi daripada teknologi DSL (18.96%). Ini mengindikasikan adanya isu krusial pada stabilitas jaringan atau ketidakpuasan terhadap skema harga produk Fiber Optic.
 ```
 -- Dampak Ketiadaan Layanan Tech Support
@@ -125,6 +130,9 @@ Hasil Output:
 | No | 3473 | 1446 | **41.64%** |
 | Yes | 2044 | 310 | 15.17% |
 | No internet service | 1526 | 113 | 7.40% |
+
+**Visualisasi Grafik**
+![Dampak Ketiadaan Layanan Tech Support](churn_by_tech_support.png)
 
 Insight: Pelanggan yang tidak mendapatkan atau tidak memanfaatkan bantuan teknis (TechSupport = 'No') memiliki churn rate sebesar 41.64%. Sebaliknya, kelompok yang mendapatkan TechSupport berhasil diredam angka churn-nya hingga menyisakan 15.17%.
 
@@ -148,6 +156,9 @@ Hasil Output:
 | Usia Produktif | 5901 | 1393 | 23.61% |
 | Lansia (Senior) | 1142 | 476 | **41.68%** |
 
+**Visualisasi Grafik:**
+![Churn Rate berdasarkan Segmentasi Usia](churn_by_senior_citizen.png)
+
 Insight: Kelompok Lansia (Senior Citizen) jauh lebih rentan churn dengan persentase 41.68% dibandingkan usia produktif yang hanya sebesar 23.61%. Faktor adaptasi teknologi atau penyesuaian pengeluaran masa pensiun diduga menjadi pemicu utama.
 ```
 -- Mengidentifikasi Rata-Rata Masa Bertahan (Tenure dalam Bulan)
@@ -163,6 +174,9 @@ Hasil Output:
 | :--- | :---: |
 | No | 37.5 Bulan |
 | Yes | **17.9 Bulan** |
+
+**Visualisasi Grafik**
+![Rata-Rata Masa Bertahan](churn_by_tenure.png)
 
 Insight: Rata-rata pelanggan yang churn memutuskan pergi pada bulan ke-18 (1.5 Tahun). Ini menandakan tahun pertama hingga pertengahan tahun kedua adalah Danger Zone (fase paling kritis) yang wajib dikawal ketat oleh tim CRM.
 
