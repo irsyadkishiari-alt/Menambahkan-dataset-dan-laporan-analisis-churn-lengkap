@@ -19,12 +19,14 @@ Sebelum analisis dilakukan, ditemukan isu *formatting* di mana terdapat karakter
 
 Proses pembersihan dilakukan langsung di database menggunakan perintah berikut:
 
-```sql
+```
 -- Menghilangkan karakter tersembunyi \r secara permanen dari kolom Churn
 UPDATE telco_churn SET Churn = REPLACE(Churn, '\r', '');
 
 -- Validasi hasil data cleaning
 SELECT Churn, COUNT(*) FROM telco_churn GROUP BY Churn;
+
+```
 
 Hasil Validasi Akhir:
 
@@ -38,6 +40,7 @@ Hasil Validasi Akhir:
 ​1. Faktor Finansial & Komitmen Kontrak
 ​Analisis menunjukkan bahwa jenis ikatan kontrak dan skema biaya bulanan memiliki korelasi yang sangat kuat dengan keputusan pelanggan untuk pergi.
 
+```
 -- Mengukur Churn Rate berdasarkan Jenis Kontrak
 SELECT 
     Contract,
@@ -47,6 +50,7 @@ SELECT
 FROM telco_churn
 GROUP BY Contract
 ORDER BY Churn_Rate_Persen DESC;
+```
 
 Hasil Output:
 
@@ -62,14 +66,14 @@ Hasil Output:
 
 
 Insight: Pelanggan dengan kontrak Month-to-month (Bulanan) memiliki tingkat churn yang sangat ekstrem sebesar 42.71%, sedangkan pelanggan kontrak 2 tahun hanya 2.83%. Pelanggan tanpa komitmen waktu jangka panjang terbukti sangat rapuh.
-
+```
 -- Analisis Biaya Bulanan (Monthly Charges) terhadap Churn
 SELECT 
     Churn,
     ROUND(AVG(MonthlyCharges), 2) AS Rata_Rata_Biaya_Bulanan
 FROM telco_churn
 GROUP BY Churn;
-
+```
 Hasil Output:
 
 | Churn Status | Rata-rata Biaya Bulanan |
@@ -83,7 +87,7 @@ Insight: Rata-rata biaya bulanan pelanggan yang churn jauh lebih mahal (74.44) d
 ​2. Kualitas Produk & Layanan Pendukung
 
 Kualitas dari infrastruktur utama dan ketersediaan bantuan teknis memegang peran vital dalam loyalitas pelanggan.
-
+```
 -- Mengukur Churn Rate berdasarkan Jenis Layanan Internet
 SELECT 
     InternetService,
@@ -93,7 +97,7 @@ SELECT
 FROM telco_churn
 GROUP BY InternetService
 ORDER BY Churn_Rate_Persen DESC;
-
+```
 Hasil Output:
 
 | Internet Service | Total Pelanggan | Total Churn | Churn Rate (%) |
@@ -103,7 +107,7 @@ Hasil Output:
 | No | 1526 | 113 | 7.40% |
 
 Insight: Infrastruktur Fiber optic secara mengejutkan menyumbang angka churn sebesar 41.89%, jauh lebih tinggi daripada teknologi DSL (18.96%). Ini mengindikasikan adanya isu krusial pada stabilitas jaringan atau ketidakpuasan terhadap skema harga produk Fiber Optic.
-
+```
 -- Dampak Ketiadaan Layanan Tech Support
 SELECT 
     TechSupport,
@@ -113,7 +117,7 @@ SELECT
 FROM telco_churn
 GROUP BY TechSupport
 ORDER BY Churn_Rate_Persen DESC;
-
+```
 Hasil Output:
 
 | Tech Support | Total Pelanggan | Total Churn | Churn Rate (%) |
@@ -127,7 +131,7 @@ Insight: Pelanggan yang tidak mendapatkan atau tidak memanfaatkan bantuan teknis
 ​3. Karakteristik Demografi & Masa Berlangganan (Tenure)
 
 ​Menganalisis segmentasi usia pelanggan serta mengidentifikasi waktu paling rawan dalam siklus berlangganan.
-
+```
 -- Churn Rate berdasarkan Segmentasi Usia (Senior Citizen)
 SELECT 
     CASE WHEN SeniorCitizen = 1 THEN 'Lansia (Senior)' ELSE 'Usia Produktif' END AS Kategori_Umur,
@@ -136,7 +140,7 @@ SELECT
     ROUND(SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS Churn_Rate_Persen
 FROM telco_churn
 GROUP BY SeniorCitizen;
-
+```
 Hasil Output:
 
 | Kategori Usia | Total Pelanggan | Total Churn | Churn Rate (%) |
@@ -145,14 +149,14 @@ Hasil Output:
 | Lansia (Senior) | 1142 | 476 | **41.68%** |
 
 Insight: Kelompok Lansia (Senior Citizen) jauh lebih rentan churn dengan persentase 41.68% dibandingkan usia produktif yang hanya sebesar 23.61%. Faktor adaptasi teknologi atau penyesuaian pengeluaran masa pensiun diduga menjadi pemicu utama.
-
+```
 -- Mengidentifikasi Rata-Rata Masa Bertahan (Tenure dalam Bulan)
 SELECT 
     Churn,
     ROUND(AVG(tenure), 1) AS Rata_Rata_Bulan_Berlangganan
 FROM telco_churn
 GROUP BY Churn;
-
+```
 Hasil Output:
 
 | Churn Status | Rata-Rata Bulan Berlangganan |
