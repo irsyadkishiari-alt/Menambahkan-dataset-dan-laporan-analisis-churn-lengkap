@@ -180,13 +180,17 @@ Hasil Output:
 
 Insight: Rata-rata pelanggan yang churn memutuskan pergi pada bulan ke-18 (1.5 Tahun). Ini menandakan tahun pertama hingga pertengahan tahun kedua adalah Danger Zone (fase paling kritis) yang wajib dikawal ketat oleh tim CRM.
 
-Kesimpulan & Rekomendasi Strategis
+##Kesimpulan & Rekomendasi Strategis
 
 ​Berdasarkan seluruh temuan data di atas, kombinasi profil pelanggan dengan risiko churn paling ekstrem adalah:
 ​Seorang Lansia, menggunakan layanan Fiber Optic berbiaya tinggi dengan kontrak bulanan (Month-to-month), melakukan pembayaran manual via Electronic Check, tidak memiliki akses Tech Support, dan masa langganannya masih berada di bawah 18 bulan.
-​
+
 Actionable Recommendations:
-​1.Insentif Migrasi Kontrak: Mengurangi jumlah pengguna kontrak bulanan dengan menawarkan diskon khusus atau keuntungan kuota jika mereka bersedia migrasi ke kontrak minimal 1 atau 2 tahun.
+
+1.Insentif Migrasi Kontrak: Mengurangi jumlah pengguna kontrak bulanan dengan menawarkan diskon khusus atau keuntungan kuota jika mereka bersedia migrasi ke kontrak minimal 1 atau 2 tahun.
+
 ​2.Auto-Debet Campaign: Memberikan potongan harga pada tagihan bulan pertama bagi pelanggan yang mengubah metode pembayaran manual (Electronic Check) menjadi otomatis (Credit Card / Bank Transfer Auto-debit).
-​3.Audit Kualitas Layanan Fiber Optic: Melakukan investigasi internal terkait stabilitas jaringan Fiber Optic, serta melakukan bundling wajib layanan Tech Support gratis untuk mendampingi pelanggan baru di fase Danger Zone (12 bulan pertama).
-​4.Program Layanan Ramah Lansia: Menyediakan jalur asistensi atau edukasi produk yang lebih mudah dipahami bagi kelompok Senior Citizen guna menekan angka kehilangan pelanggan di sektor ini.
+
+3.Audit Kualitas Layanan Fiber Optic: Melakukan investigasi internal terkait stabilitas jaringan Fiber Optic, serta melakukan bundling wajib layanan Tech Support gratis untuk mendampingi pelanggan baru di fase Danger Zone (12 bulan pertama).
+
+4.Program Layanan Ramah Lansia: Menyediakan jalur asistensi atau edukasi produk yang lebih mudah dipahami bagi kelompok Senior Citizen guna menekan angka kehilangan pelanggan di sektor ini.
