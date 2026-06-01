@@ -58,6 +58,10 @@ Hasil Output:
 |Two Year      | 1695            | 48          | 2.83%          |
  ---------------------------------------------------------------
 
+**Visualisasi Grafik:**
+![Grafik Churn berdasarkan Jenis Kontrak](churn_by_contract.png)
+
+
 Insight: Pelanggan dengan kontrak Month-to-month (Bulanan) memiliki tingkat churn yang sangat ekstrem sebesar 42.71%, sedangkan pelanggan kontrak 2 tahun hanya 2.83%. Pelanggan tanpa komitmen waktu jangka panjang terbukti sangat rapuh.
 
 -- Analisis Biaya Bulanan (Monthly Charges) terhadap Churn
