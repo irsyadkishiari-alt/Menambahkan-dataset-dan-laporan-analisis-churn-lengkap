@@ -172,8 +172,8 @@ Hasil Output:
 
 | Churn Status | Rata-Rata Bulan Berlangganan |
 | :--- | :---: |
-| No | 37.5 Bulan |
-| Yes | **17.9 Bulan** |
+| No | 37.6 Bulan |
+| Yes | **18 Bulan** |
 
 **Visualisasi Grafik**
 ![Rata-Rata Masa Bertahan](churn_by_tenure.png)
