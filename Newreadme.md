@@ -115,7 +115,8 @@ Month-to-month| 3875| 1655| 42.71%
 One year| 1473| 166| 11.27%
 Two year| 1695| 48| 2.83%
 
-"Contract Analysis" (images/churn_by_contract.png)
+**Visualisasi Grafik:**
+![Grafik Churn berdasarkan Jenis Kontrak](churn_by_contract.png)
 
 **Key Insight**
 
