@@ -50,8 +50,9 @@ Dataset berisi informasi mengenai:
 
 ## 🛠️ Tech Stack
 
-Category| Tools
-Database| MariaDB / MySQL
+| Category | Tools |
+| :-- | :-- |
+| Database  | MariaDB / MySQL |
 Programming Language| Python 3
 Environment| Linux CLI (Termux + PRoot Ubuntu)
 Data Processing| Pandas, NumPy
@@ -60,26 +61,27 @@ Database Connector| mysql-connector-python
 
 ---
 
-🧼 Data Cleaning & Preprocessing
+## 🧼 Data Cleaning & Preprocessing
 
-Sebelum analisis dilakukan, ditemukan masalah kualitas data berupa karakter tersembunyi ("\r") pada kolom target "Churn".
+Sebelum analisis dilakukan, ditemukan masalah kualitas data berupa karakter tersembunyi ***("\r")*** pada kolom target ***"Churn"***.
 
 Masalah ini menyebabkan query filtering dan grouping menghasilkan output yang tidak konsisten.
 
-Data Cleaning Query
+**Data Cleaning Query**
 
-UPDATE telco_churn
+``` UPDATE telco_churn
 SET Churn = REPLACE(Churn, '\r', '');
-
-Validation Query
-
+```
+**Validation Query**
+```
 SELECT Churn, COUNT(*)
 FROM telco_churn
 GROUP BY Churn;
+```
+**Validation Result**
 
-Validation Result
-
-Churn Status| Total Customers
+|Churn Status| Total Customers|
+| :-- | :-- |
 No| 5174
 Yes| 1869
 
@@ -87,12 +89,12 @@ Dataset kemudian dinyatakan siap untuk dianalisis.
 
 ---
 
-📊 Exploratory Data Analysis (EDA)
+## 📊 Exploratory Data Analysis (EDA)
 
-1️⃣ Customer Churn by Contract Type
+### 1️⃣ Customer Churn by Contract Type
 
-SQL Query
-
+**SQL Query**
+```
 SELECT
     Contract,
     COUNT(*) AS Total_Customers,
@@ -104,43 +106,45 @@ SELECT
 FROM telco_churn
 GROUP BY Contract
 ORDER BY Churn_Rate DESC;
+```
+**Result**
 
-Result
-
-Contract| Total Customers| Churn Customers| Churn Rate
+|Contract| Total Customers| Churn Customers| Churn Rate|
+| :-- | :-- | :-- | :-- |
 Month-to-month| 3875| 1655| 42.71%
 One year| 1473| 166| 11.27%
 Two year| 1695| 48| 2.83%
 
 "Contract Analysis" (images/churn_by_contract.png)
 
-Key Insight
+**Key Insight**
 
-Pelanggan dengan kontrak bulanan memiliki tingkat churn hampir 15 kali lebih tinggi dibandingkan pelanggan kontrak dua tahun.
+Pelanggan dengan kontrak bulanan memiliki tingkat churn hampir **15 kali lebih tinggi** dibandingkan pelanggan kontrak dua tahun.
 
 Hal ini menunjukkan bahwa komitmen kontrak merupakan salah satu faktor terkuat yang memengaruhi retensi pelanggan.
 
 ---
 
-2️⃣ Monthly Charges Analysis
+### 2️⃣ Monthly Charges Analysis
 
-SQL Query
-
+**SQL Query**
+```
 SELECT
     Churn,
     ROUND(AVG(MonthlyCharges),2) AS Avg_Monthly_Charges
 FROM telco_churn
 GROUP BY Churn;
-
-Result
+```
+**Result**
 
 Churn Status| Average Monthly Charges
+| :-- | :-- |
 No| 61.27
 Yes| 74.44
 
 "Monthly Charges Analysis" (images/churn_by_monthly_charges.png)
 
-Key Insight
+**Key Insight**
 
 Pelanggan yang churn membayar rata-rata biaya bulanan yang lebih tinggi dibandingkan pelanggan yang bertahan.
 
@@ -148,18 +152,19 @@ Perbedaan ini menunjukkan adanya sensitivitas harga pada kelompok pelanggan tert
 
 ---
 
-3️⃣ Internet Service Analysis
+### 3️⃣ Internet Service Analysis
 
-Result
+**Result**
 
 Internet Service| Churn Rate
+| :-- |  :-- |
 Fiber Optic| 41.89%
 DSL| 18.96%
 No Internet Service| 7.40%
 
 "Internet Service Analysis" (images/churn_by_internet_service.png)
 
-Key Insight
+**Key Insight**
 
 Layanan Fiber Optic memiliki tingkat churn tertinggi meskipun merupakan layanan premium.
 
