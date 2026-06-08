@@ -88,143 +88,143 @@ Yes| 1869
 Dataset kemudian dinyatakan siap untuk dianalisis.
 
 ---
-
 ## 📊 Exploratory Data Analysis (EDA)
-
 ### 1️⃣ Customer Churn by Contract Type
-
 **SQL Query**
 ```
-SELECT
+SELECT 
     Contract,
-    COUNT(*) AS Total_Customers,
-    SUM(CASE WHEN Churn='Yes' THEN 1 ELSE 0 END) AS Total_Churn,
-    ROUND(
-        SUM(CASE WHEN Churn='Yes' THEN 1 ELSE 0 END) * 100.0
-        / COUNT(*),
-    2) AS Churn_Rate
+    COUNT(*) AS Total_Pelanggan,
+    SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) AS Total_Churn,
+    ROUND(SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS Churn_Rate_Persen
 FROM telco_churn
 GROUP BY Contract
-ORDER BY Churn_Rate DESC;
+ORDER BY Churn_Rate_Persen DESC;
 ```
 **Result**
-
-|Contract| Total Customers| Churn Customers| Churn Rate|
+|Contract|Total Pelanggan|Total Churn|Churn Rate (%)|
 | :-- | :-- | :-- | :-- |
-Month-to-month| 3875| 1655| 42.71%
-One year| 1473| 166| 11.27%
-Two year| 1695| 48| 2.83%
-
-**Visualisasi Grafik:**
-![Grafik Churn berdasarkan Jenis Kontrak](churn_by_contract.png)
+|Month-to-month|3875|1655|42.71|
+|One year|1473|166|11.27|
+|Two year|1695|48|2.83%
 
 **Key Insight**
 
-Pelanggan dengan kontrak bulanan memiliki tingkat churn hampir **15 kali lebih tinggi** dibandingkan pelanggan kontrak dua tahun.
-
+Pelanggan dengan kontrak bulanan memiliki tingkat churn hampir 15 kali lebih tinggi dibandingkan pelanggan kontrak dua tahun.
 Hal ini menunjukkan bahwa komitmen kontrak merupakan salah satu faktor terkuat yang memengaruhi retensi pelanggan.
 
----
-
 ### 2️⃣ Monthly Charges Analysis
-
 **SQL Query**
 ```
-SELECT
+SELECT 
     Churn,
-    ROUND(AVG(MonthlyCharges),2) AS Avg_Monthly_Charges
+    ROUND(AVG(MonthlyCharges), 2) AS Rata_Rata_Biaya_Bulanan
 FROM telco_churn
 GROUP BY Churn;
 ```
 **Result**
-
-Churn Status| Average Monthly Charges
+|Churn Status|Average Rata-rata Biaya Bulanan|
 | :-- | :-- |
-No| 61.27
-Yes| 74.44
-
-"Monthly Charges Analysis" (images/churn_by_monthly_charges.png)
+|No|61.27|
+|Yes|74.44|
 
 **Key Insight**
 
 Pelanggan yang churn membayar rata-rata biaya bulanan yang lebih tinggi dibandingkan pelanggan yang bertahan.
-
 Perbedaan ini menunjukkan adanya sensitivitas harga pada kelompok pelanggan tertentu.
 
----
-
 ### 3️⃣ Internet Service Analysis
-
+**SQL Query**
+```
+SELECT 
+    InternetService,
+    COUNT(*) AS Total_Pelanggan,
+    SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) AS Total_Churn,
+    ROUND(SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS Churn_Rate_Persen
+FROM telco_churn
+GROUP BY InternetService
+ORDER BY Churn_Rate_Persen DESC;
+```
 **Result**
-
-Internet Service| Churn Rate
-| :-- |  :-- |
-Fiber Optic| 41.89%
-DSL| 18.96%
-No Internet Service| 7.40%
-
-"Internet Service Analysis" (images/churn_by_internet_service.png)
+|Internet Service|Total Pelanggan|Total Churn|Churn Rate (%)|
+| :-- | :-- | :-- | :-- |
+|Fiber Optic|3096|1297|41.89%|
+|DSL|2421|459|18.96%
+|No |1526|113|7.40%
 
 **Key Insight**
 
 Layanan Fiber Optic memiliki tingkat churn tertinggi meskipun merupakan layanan premium.
-
 Temuan ini mengindikasikan kemungkinan adanya masalah pada:
+Kualitas layanan
+Harga produk
+Ekspektasi pelanggan yang tidak terpenuhi
 
-- Kualitas layanan
-- Harga produk
-- Ekspektasi pelanggan yang tidak terpenuhi
+### 4️⃣ Technical Support Analysis
+**SQL Query**
+```
+SELECT 
+    TechSupport,
+    COUNT(*) AS Total_Pelanggan,
+    SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) AS Total_Churn,
+    ROUND(SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS Churn_Rate_Persen
+FROM telco_churn
+GROUP BY TechSupport
+ORDER BY Churn_Rate_Persen DESC;
+```
+**Result**
+|Tech Support|Total Pelanggan|Total Churn|Churn Rate
+| :-- | :-- | :-- | :-- |
+|No|3473|1446|41.64%
+|Yes|2044|310|15.17%
+|No Internet Service|1526|113|7.40%
 
----
-
-4️⃣ Technical Support Analysis
-
-Result
-
-Tech Support| Churn Rate
-No| 41.64%
-Yes| 15.17%
-No Internet Service| 7.40%
-
-"Tech Support Analysis" (images/churn_by_tech_support.png)
-
-Key Insight
+**Key Insight**
 
 Pelanggan tanpa Technical Support memiliki risiko churn hampir tiga kali lebih tinggi dibandingkan pelanggan yang mendapatkan dukungan teknis.
 
----
+### 5️⃣ Senior Citizen Analysis
+**SQL Query**
+```
+SELECT 
+    CASE WHEN SeniorCitizen = 1 THEN 'Lansia (Senior)' ELSE 'Usia Produktif' END AS Kategori_Umur,
+    COUNT(*) AS Total_Pelanggan,
+    SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) AS Total_Churn,
+    ROUND(SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS Churn_Rate_Persen
+FROM telco_churn
+GROUP BY SeniorCitizen;
+```
+**Result**
+|Kategori Usia|Total Pelanggan|Total Churn|Churn Rate(%)
+| :-- | :-- | :-- | :--
+|Usia Produktif|5901|1393|23.61%
+|Lansia(Senior)|1142|476|41.68%
 
-5️⃣ Senior Citizen Analysis
-
-Result
-
-Customer Segment| Churn Rate
-Productive Age| 23.61%
-Senior Citizen| 41.68%
-
-"Senior Citizen Analysis" (images/churn_by_senior_citizen.png)
-
-Key Insight
+**Key Insight**
 
 Kelompok Senior Citizen memiliki tingkat churn yang jauh lebih tinggi dibandingkan pelanggan usia produktif.
 
----
+### 6️⃣ Tenure Analysis
+**SQL Query**
+```
+SELECT 
+    Churn,
+    ROUND(AVG(tenure), 1) AS Rata_Rata_Bulan_Berlangganan
+FROM telco_churn
+GROUP BY Churn;
+```
+**Result**
+|Churn Status|Rata-rata Bulanan Berlanggana
+| :-- | :--
+|No|37.6 Bulan
+|Yes|18 Bulan
 
-6️⃣ Tenure Analysis
-
-Result
-
-Churn Status| Average Tenure
-No| 37.6 Months
-Yes| 18 Months
-
-"Tenure Analysis" (images/churn_by_tenure.png)
-
-Key Insight
+**Key Insight**
 
 Mayoritas pelanggan yang churn meninggalkan layanan pada sekitar bulan ke-18.
-
 Periode 0–18 bulan dapat dikategorikan sebagai Customer Danger Zone.
+
+
 
 ---
 
