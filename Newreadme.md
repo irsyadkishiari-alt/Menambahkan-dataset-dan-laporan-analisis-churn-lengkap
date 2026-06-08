@@ -108,6 +108,8 @@ ORDER BY Churn_Rate_Persen DESC;
 |One year|1473|166|11.27|
 |Two year|1695|48|2.83%
 
+**Visualisasi Grafik:**
+![Grafik Churn berdasarkan Jenis Kontrak](churn_by_contract.png)
 **Key Insight**
 
 Pelanggan dengan kontrak bulanan memiliki tingkat churn hampir 15 kali lebih tinggi dibandingkan pelanggan kontrak dua tahun.
@@ -128,6 +130,8 @@ GROUP BY Churn;
 |No|61.27|
 |Yes|74.44|
 
+**Visualisasi Grafik:**
+![Grafik Churn berdasarkan Biaya Bulanan](churn_by_monthly_charges.png)
 **Key Insight**
 
 Pelanggan yang churn membayar rata-rata biaya bulanan yang lebih tinggi dibandingkan pelanggan yang bertahan.
@@ -152,6 +156,8 @@ ORDER BY Churn_Rate_Persen DESC;
 |DSL|2421|459|18.96%
 |No |1526|113|7.40%
 
+**Visualisasi Grafik:**
+![Grafik Churn berdasarkan Layanan Internet](churn_by_internet_service.png)
 **Key Insight**
 
 Layanan Fiber Optic memiliki tingkat churn tertinggi meskipun merupakan layanan premium.
@@ -179,6 +185,8 @@ ORDER BY Churn_Rate_Persen DESC;
 |Yes|2044|310|15.17%
 |No Internet Service|1526|113|7.40%
 
+**Visualisasi Grafik:**
+![Grafik Churn berdasarkan Tech Suport](churn_by_tech_support.png)
 **Key Insight**
 
 Pelanggan tanpa Technical Support memiliki risiko churn hampir tiga kali lebih tinggi dibandingkan pelanggan yang mendapatkan dukungan teknis.
@@ -200,6 +208,8 @@ GROUP BY SeniorCitizen;
 |Usia Produktif|5901|1393|23.61%
 |Lansia(Senior)|1142|476|41.68%
 
+**Visualisasi Grafik:**
+![Grafik Churn berdasarkan Kategori Usia](churn_by_senior_citizen.png)
 **Key Insight**
 
 Kelompok Senior Citizen memiliki tingkat churn yang jauh lebih tinggi dibandingkan pelanggan usia produktif.
@@ -219,6 +229,8 @@ GROUP BY Churn;
 |No|37.6 Bulan
 |Yes|18 Bulan
 
+**Visualisasi Grafik:**
+![Grafik Churn berdasarkan Rata-rata Bulan Berlangganan](churn_by_tenure.png)
 **Key Insight**
 
 Mayoritas pelanggan yang churn meninggalkan layanan pada sekitar bulan ke-18.
