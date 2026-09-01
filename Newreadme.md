@@ -186,7 +186,7 @@ ORDER BY Churn_Rate_Persen DESC;
 |No Internet Service|1526|113|7.40%
 
 **Visualisasi Grafik:**
-![Grafik Churn berdasarkan Tech Suport](SALES_COMPARE_(1).png)
+![Grafik Churn berdasarkan Tech Suport](SALES COMPARE (1).png)
 **Key Insight**
 
 Pelanggan tanpa Technical Support memiliki risiko churn hampir tiga kali lebih tinggi dibandingkan pelanggan yang mendapatkan dukungan teknis.
